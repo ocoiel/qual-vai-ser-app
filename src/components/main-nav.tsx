@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { allDocs } from "contentlayer/generated";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/libs/utils";
