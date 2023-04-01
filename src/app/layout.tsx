@@ -1,11 +1,20 @@
 import "@/styles/globals.css";
+import { Inter as FontSans } from "@next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/header";
+import { cn } from "@/libs/utils";
 
 export const metadata = {
   title: "Qual vai ser",
   description: "Site para votaçōes rápidas",
 };
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -15,10 +24,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head />
-      <body>
+      <body
+        className={cn(
+          "min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50",
+          inter.variable
+        )}
+      >
         <ThemeProvider>
           <div className='flex min-h-screen flex-col'>
-            {/* <Header /> */}
+            <Header />
             <div className='container flex-1'>{children}</div>
             {/* <Footer /> */}
           </div>
