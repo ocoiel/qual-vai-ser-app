@@ -17,6 +17,12 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        "hi-contrast": "var(--colors-hi-contrast)",
+      },
+      spacing: {
+        "link-icon-size": "var(--link-icon-size)",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
