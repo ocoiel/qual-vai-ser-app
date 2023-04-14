@@ -26,13 +26,13 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50",
+          "min-h-screen font-sans antialiased bg-black text-neutral-900 bg-gradient-to-tl dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950 dark:text-neutral-50",
           fontSans.variable
         )}
       >
-        <ThemeProvider>
+        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
           <div className='flex min-h-screen flex-col'>
-            <Header />
+            {/* <Header /> */}
             <div className='container flex-1'>{children}</div>
             {/* <Footer /> */}
           </div>
