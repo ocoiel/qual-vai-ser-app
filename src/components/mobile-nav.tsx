@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
