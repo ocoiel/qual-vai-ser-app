@@ -101,7 +101,7 @@ export function MainNav() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem className='hidden lg:flex'>
-            <Link href='/figma' legacyBehavior passHref>
+            <Link href='/' legacyBehavior passHref>
               <NavigationMenuLink
                 className={cn(navigationMenuTriggerStyle(), "h-9")}
               >

@@ -16,7 +16,7 @@ export default function Head() {
       />
       <link rel='icon' type='image/png' sizes='32x32' href='/favicon.ico' />
       <link rel='icon' type='image/png' sizes='16x16' href='/favicon.ico' />
-      <link rel='manifest' href='/site.webmanifest' />
+      {/* <link rel='manifest' href='/site.webmanifest' /> */}
       <meta content='width=device-width, initial-scale=1' name='viewport' />
       <meta property='og:type' content='website' />
       <meta property='og:title' content={siteConfig.name} />

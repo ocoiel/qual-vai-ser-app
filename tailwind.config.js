@@ -11,14 +11,16 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: "3rem",
       screens: {
         "2xl": "1440px",
       },
     },
     extend: {
       colors: {
-        "hi-contrast": "var(--colors-hi-contrast)",
+        "hi-contrast": "rgb(var(--colors-hi-contrast))",
+        "lo-contrast": "rgb(var(--colors-lo-contrast))",
+        "border-colors": "var(--border-colors)",
       },
       spacing: {
         "link-icon-size": "var(--link-icon-size)",
