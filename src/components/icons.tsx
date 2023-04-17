@@ -12,6 +12,7 @@ import {
   HelpCircle,
   Home,
   Image,
+  Chrome,
   LayoutDashboard,
   Laptop,
   Loader2,
@@ -47,6 +48,7 @@ export const Icons = {
     </svg>
   ),
   close: X,
+  google: Chrome,
   spinner: Loader2,
   loader: Loader,
   chevronLeft: ChevronLeft,
