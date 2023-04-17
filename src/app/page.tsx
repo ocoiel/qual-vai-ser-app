@@ -1,51 +1,20 @@
 import { Footer } from "@/components/footer";
+import { Form } from "@/components/form-create-poll";
 import { Header } from "@/components/header";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <h1 className='text-black dark:text-white'>
-        Qual vai ser - Votações rápidas
-      </h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-        soluta nostrum aliquid cupiditate tempore suscipit necessitatibus, ad at
-        asperiores vitae itaque nam? Excepturi nulla impedit autem totam
-        consequatur consequuntur nesciunt.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-        soluta nostrum aliquid cupiditate tempore suscipit necessitatibus, ad at
-        asperiores vitae itaque nam? Excepturi nulla impedit autem totam
-        consequatur consequuntur nesciunt.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-        soluta nostrum aliquid cupiditate tempore suscipit necessitatibus, ad at
-        asperiores vitae itaque nam? Excepturi nulla impedit autem totam
-        consequatur consequuntur nesciunt.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-        soluta nostrum aliquid cupiditate tempore suscipit necessitatibus, ad at
-        asperiores vitae itaque nam? Excepturi nulla impedit autem totam
-        consequatur consequuntur nesciunt.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-        soluta nostrum aliquid cupiditate tempore suscipit necessitatibus, ad at
-        asperiores vitae itaque nam? Excepturi nulla impedit autem totam
-        consequatur consequuntur nesciunt.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-        soluta nostrum aliquid cupiditate tempore suscipit necessitatibus, ad at
-        asperiores vitae itaque nam? Excepturi nulla impedit autem totam
-        consequatur consequuntur nesciunt.
-      </p>
-
-      <p className='mt-2'>amor</p>
+      <div className='text-center mb-4 p-4'>
+        <h3 className='mt-8 scroll-m-20 text-2xl font-semibold tracking-tight'>
+          Crie a votação
+        </h3>
+        <p className='text-sm text-slate-500 dark:text-slate-400'>
+          Preencha os campos abaixo para criar sua enquete.
+        </p>
+      </div>
+      <Form />
       <Footer />
     </>
   );

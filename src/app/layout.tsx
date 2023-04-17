@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { ToastProvider } from "@/components/toast-provider";
 
+import NextTopLoader from "nextjs-toploader";
+
 export const metadata = {
   title: "Qual vai ser",
   description: "Site para votaçōes rápidas",
@@ -31,7 +33,10 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider>
-          <ToastProvider>{children}</ToastProvider>
+          <ToastProvider>
+            <NextTopLoader showSpinner={false} />
+            {children}
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>
