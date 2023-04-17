@@ -1,11 +1,12 @@
 import "@/styles/globals.css";
 import { Inter as FontSans } from "@next/font/google";
 
-import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { ToastProvider } from "@/components/toast-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ToastProvider } from "@/components/providers/toast-provider";
 
 import NextTopLoader from "nextjs-toploader";
+import SupabaseProvider from "@/components/providers/supabase-provider";
 
 export const metadata = {
   title: "Qual vai ser",
@@ -24,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='pt-br' suppressHydrationWarning>
       <head />
       <body
         className={cn(
@@ -32,12 +33,14 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider>
-          <ToastProvider>
-            <NextTopLoader showSpinner={false} />
-            {children}
-          </ToastProvider>
-        </ThemeProvider>
+        <SupabaseProvider>
+          <ThemeProvider>
+            <ToastProvider>
+              <NextTopLoader showSpinner={false} />
+              {children}
+            </ToastProvider>
+          </ThemeProvider>
+        </SupabaseProvider>
       </body>
     </html>
   );
