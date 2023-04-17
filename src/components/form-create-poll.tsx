@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import { toast } from "react-hot-toast";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 import { Icons } from "@/components/icons";
@@ -11,17 +10,27 @@ import { Label } from "./ui/label";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
+import { useToast } from "@/hooks/use-toast";
+import useSound from "use-sound";
+
 export function Form() {
   const [wait, setWait] = useState(false);
   const [title, setTitle] = useState<string>("");
   const [options, setOptions] = useState<string[]>(["", ""]);
 
   const router = useRouter();
+  const { toast } = useToast();
   const [animationRef] = useAutoAnimate<HTMLDivElement>();
+  const [play] = useSound("/key-press1.mp3");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setWait(true);
+    toast({
+      title: "Criando enquete",
+      duration: 2000,
+      description: "Friday, February 10, 2023 at 5:57 PM",
+    });
 
     return new Promise(() => {
       setTimeout(() => {
@@ -62,7 +71,10 @@ export function Form() {
           placeholder='E aí? Qual vai ser?'
           name='title'
           id='title'
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => {
+            setTitle(e.target.value);
+            play();
+          }}
           value={title}
           autoFocus
           required
@@ -82,6 +94,7 @@ export function Form() {
                 name={`opt${i + 1}`}
                 value={opt.value}
                 onChange={(e) => {
+                  play();
                   const list = [...options];
                   list[i] = e.target.value;
                   setOptions(list);
