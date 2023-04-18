@@ -3,7 +3,6 @@ import {
   Library,
   ListMusic,
   Mic2,
-  Music,
   Music2,
   PlayCircle,
   Radio,
@@ -14,26 +13,42 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-import { Playlist } from "../data/playlists";
+export type Poll = typeof polls[number];
+
+const polls = [
+  "Recently Added",
+  "Recently Played",
+  "Top Songs",
+  "Top Albums",
+  "Top Artists",
+  "Logic Discography",
+  "Bedtime Beats",
+  "Feeling Happy",
+  "I miss Y2K Pop",
+  "Runtober",
+  "Mellow Days",
+  "Eminem Essentials",
+];
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  playlists: Playlist[];
+  polls: Poll[];
 }
 
-export function Sidebar({ className, playlists }: SidebarProps) {
+export function Sidebar({ className, polls }: SidebarProps) {
   return (
-    <div className={cn("pb-12", className)}>
+    <aside
+      className={cn(
+        "w-60 border-r border-neutral-200 dark:border-neutral-800 mt-4",
+        className
+      )}
+    >
       <div className='space-y-4 py-4'>
         <div className='px-4 py-2'>
           <h2 className='mb-2 px-2 text-lg font-semibold tracking-tight'>
             Discover
           </h2>
           <div className='space-y-1'>
-            <Button
-              variant='secondary'
-              size='sm'
-              className='w-full justify-start'
-            >
+            <Button variant='ghost' size='sm' className='w-full justify-start'>
               <PlayCircle className='mr-2 h-4 w-4' />
               Listen Now
             </Button>
@@ -76,24 +91,25 @@ export function Sidebar({ className, playlists }: SidebarProps) {
         </div>
         <div className='py-2'>
           <h2 className='relative px-6 text-lg font-semibold tracking-tight'>
-            Playlists
+            Polls
           </h2>
           <ScrollArea className='h-[300px] px-2'>
             <div className='space-y-1 p-2'>
-              {playlists?.map((playlist) => (
+              {polls?.map((poll, i) => (
                 <Button
+                  key={i}
                   variant='ghost'
                   size='sm'
                   className='w-full justify-start font-normal'
                 >
                   <ListMusic className='mr-2 h-4 w-4' />
-                  {playlist}
+                  {poll}
                 </Button>
               ))}
             </div>
           </ScrollArea>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }
