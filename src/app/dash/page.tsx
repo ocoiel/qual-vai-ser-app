@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { PollCard } from "@/components/poll-card-dashboard";
 import { Sidebar } from "@/components/sidebar-dashboard";
 
 const polls = [
@@ -30,6 +31,11 @@ export default function DashboardPage() {
           </h1>
           <h2>Gabriel Albuquerque</h2>
           <span>Usuario free</span>
+          <div className='flex flex-1 flex-col'>
+            <PollCard />
+            <PollCard />
+            <PollCard />
+          </div>
         </div>
       </div>
       <Footer />
