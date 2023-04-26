@@ -12,6 +12,7 @@ import { Button } from "./ui/button";
 
 import { useToast } from "@/hooks/use-toast";
 import useSound from "use-sound";
+import { Switch } from "./ui/switch";
 
 export function Form() {
   const [wait, setWait] = useState(false);
@@ -60,7 +61,7 @@ export function Form() {
   }
   return (
     <form
-      className='flex flex-col rounded-lg border-t-4 border-black dark:border-white dark:bg-neutral-900 bg-white max-w-3xl mx-auto py-6 px-6'
+      className='flex flex-col rounded-lg border-t-4 border-black dark:border-white dark:bg-neutral-900 bg-white max-w-3xl mx-6 md:mx-auto py-6 px-6 mb-6'
       autoComplete='off'
       onSubmit={handleSubmit}
     >
@@ -82,7 +83,21 @@ export function Form() {
 
         <Separator className='space-y-2' />
 
-        <Label>Opçōes</Label>
+        <div className='flex items-center justify-between'>
+          <Label>Opçōes</Label>
+          {options?.length < 5 && (
+            <Button
+              variant='outline'
+              type='button'
+              onClick={() => {
+                setOptions((prev) => [...prev, ""]);
+              }}
+            >
+              Adicionar
+              <Icons.add className='ml-2 h-5 w-5 stroke-2' />
+            </Button>
+          )}
+        </div>
         <div className='flex flex-col w-full space-y-4' ref={animationRef}>
           {options.map((opt: any, i: number) => (
             <div className='flex justify-end items-center' key={i}>
@@ -119,21 +134,21 @@ export function Form() {
         </div>
         <Separator className='space-y-2' />
         <Label>Cofigurações</Label>
+        <div className='flex flex-col space-y-2'>
+          <div className='flex p-2 gap-x-4 items-center'>
+            <Label htmlFor='expires'>Expira automaticamente</Label>
+            <Switch id='expires' />
+          </div>
+
+          <div className='flex p-2 gap-x-4 items-center'>
+            <Label htmlFor='name-required'>Exigir nome do participante</Label>
+            <Switch id='name-required' />
+          </div>
+        </div>
+
         <Separator className='space-y-2' />
 
         <div className='flex justify-between w-full space-x-4'>
-          {options?.length < 5 && (
-            <Button
-              variant='outline'
-              type='button'
-              onClick={() => {
-                setOptions((prev) => [...prev, ""]);
-              }}
-            >
-              Adicionar
-              <Icons.add className='ml-2 h-5 w-5 stroke-2' />
-            </Button>
-          )}
           <Button
             className='transition-all ease-out duration-200'
             type='submit'
