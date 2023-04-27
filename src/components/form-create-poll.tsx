@@ -153,13 +153,13 @@ export function Form() {
         <Label>Cofigurações</Label>
         <div className='flex flex-col space-y-2'>
           <div className='flex p-2 gap-x-4 items-center'>
-            <Label htmlFor='expires'>Expira automaticamente</Label>
-            <Switch id='expires' />
+            <Label htmlFor='name-required'>Exigir nome do participante</Label>
+            <Switch id='name-required' />
           </div>
 
           <div className='flex p-2 gap-x-4 items-center'>
-            <Label htmlFor='name-required'>Exigir nome do participante</Label>
-            <Switch id='name-required' />
+            <Label htmlFor='expires'>Expira automaticamente</Label>
+            <Switch id='expires' />
           </div>
         </div>
 
