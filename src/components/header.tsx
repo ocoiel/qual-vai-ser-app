@@ -7,8 +7,15 @@ import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { UserNav } from "./user-in-nav";
+import { useSupabaseInServerSide } from "@/hooks/use-supabase-server";
 
-export function Header() {
+export async function Header() {
+  const { supabase } = useSupabaseInServerSide();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
   return (
     <header className='sticky top-0  z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 bg-gradient-to-tl dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950'>
       <div className='lg:container md:container flex h-16 items-center'>
@@ -39,22 +46,23 @@ export function Header() {
                   <span className='sr-only'>GitHub</span>
                 </div>
               </Link>
+              {!session && (
+                <Link href='/auth'>
+                  <div
+                    className={buttonVariants({
+                      size: "sm",
+                      variant: "ghost",
+                      className: "text-slate-700 dark:text-slate-400 text-base",
+                    })}
+                  >
+                    Login
+                  </div>
+                </Link>
+              )}
             </div>
             <ModeToggle />
-            {/* Aqui vai entrar um novo componente */}
-            <Link href='/auth'>
-              <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                  className: "text-slate-700 dark:text-slate-400 text-base",
-                })}
-              >
-                Login
-              </div>
-            </Link>
-            {/* @ts-ignore */}
-            <UserNav />
+            {/* @ts-ignore Component assincrono */}
+            {session && <UserNav />}
           </nav>
         </div>
       </div>

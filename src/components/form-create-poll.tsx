@@ -5,17 +5,17 @@ import { useRouter } from "next/navigation";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 import { Icons } from "@/components/icons";
+import { CalendarExpires } from "./calendar-expires";
+
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
+import { Switch } from "./ui/switch";
+import { Textarea } from "./ui/textarea";
 
 import { useToast } from "@/hooks/use-toast";
 import useSound from "use-sound";
-import { Switch } from "./ui/switch";
-import { Textarea } from "./ui/textarea";
-import { CalendarExpires } from "./calendar-expires";
-import { useSupabase } from "@/hooks/use-supabase";
 
 export function Form() {
   const [wait, setWait] = useState(false);
@@ -26,7 +26,6 @@ export function Form() {
   const [hasExpiresAt, setHasExpiresAt] = useState(false);
 
   const router = useRouter();
-  const { supabase } = useSupabase();
   const { toast } = useToast();
   const [animationRef] = useAutoAnimate<HTMLDivElement>();
   const [play] = useSound("/key-press1.mp3");
@@ -45,26 +44,6 @@ export function Form() {
         router.push(`/poll/${(Math.random() * 100).toFixed(0)}`);
       }, Math.random() * 200);
     });
-    //
-    // const res = await fetch('/api/new-event', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     title,
-    //     option_array: options,
-    //   }),
-    // })
-    // if (res.ok) {
-    //   const { unique } = await res.json()
-    //   setWait(false)
-    //   toast.success('Success create event')
-    //   router.push(`/event/${unique}`)
-    // } else {
-    //   setWait(false)
-    //   toast.success('Failed create event')
-    // }
   }
   return (
     <form
