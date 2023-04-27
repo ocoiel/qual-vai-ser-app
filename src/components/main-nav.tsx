@@ -31,7 +31,7 @@ export function MainNav() {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className='h-9'>
-              Getting started
+              Começar
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
@@ -39,7 +39,7 @@ export function MainNav() {
                   <Link href='/' passHref legacyBehavior>
                     <NavigationMenuLink
                       className='flex h-full w-full select-none
-                    flex-col justify-end space-y-2 rounded-md bg-gradient-to-b from-rose-500 to-indigo-700 p-6 no-underline outline-none focus:shadow-md'
+                    flex-col justify-end space-y-2 rounded-md bg-gradient-to-b from-indigo-400 to-indigo-800 p-6 no-underline outline-none focus:shadow-md'
                     >
                       <div className='text-lg font-medium text-white'>
                         {siteConfig.name}
@@ -50,21 +50,21 @@ export function MainNav() {
                     </NavigationMenuLink>
                   </Link>
                 </li>
-                <ListItem href='/docs' title='Introduction'>
-                  Re-usable components built using Radix UI and Tailwind CSS.
+                <ListItem href='/' title='Múltipla escolha'>
+                  Crie suas opçōes e deixe eles decidirem!
                 </ListItem>
-                <ListItem href='/docs/installation' title='Installation'>
-                  How to install dependencies and structure your app.
+                <ListItem href='/' title='Com fotos'>
+                  Faça sua votação usando fotos!
                 </ListItem>
-                <ListItem href='/docs/primitives/typography' title='Typography'>
-                  Styles for headings, paragraphs, lists...etc
+                <ListItem href='/' title='Pontuação'>
+                  Ordene as opçōes usando o sistema de pontuação
                 </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger className='h-9'>
-              Components
+              Suas votaçōes
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className='grid w-[600px] grid-cols-2 gap-3 p-4'>
@@ -76,10 +76,26 @@ export function MainNav() {
                       )}
                     >
                       <div className='text-sm font-medium leading-none'>
-                        Teste
+                        Poll 1
                       </div>
                       <p className='line-clamp-2 text-sm leading-snug text-slate-500 dark:text-slate-400'>
-                        Amor
+                        Amorzinho
+                      </p>
+                    </NavigationMenuLink>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='' passHref legacyBehavior>
+                    <NavigationMenuLink
+                      className={cn(
+                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700"
+                      )}
+                    >
+                      <div className='text-sm font-medium leading-none'>
+                        Poll 2
+                      </div>
+                      <p className='line-clamp-2 text-sm leading-snug text-slate-500 dark:text-slate-400'>
+                        Como amar eh bom!
                       </p>
                     </NavigationMenuLink>
                   </Link>
@@ -94,29 +110,11 @@ export function MainNav() {
                       "w-full dark:hover:bg-slate-700"
                     )}
                   >
-                    Browse components
+                    Veja todas suas enquetes criadas
                   </NavigationMenuLink>
                 </Link>
               </div>
             </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem className='hidden lg:flex'>
-            <Link href='/' legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), "h-9")}
-              >
-                Figma
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem className='hidden lg:flex'>
-            <Link href={siteConfig.links.github} legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), "h-9")}
-              >
-                GitHub
-              </NavigationMenuLink>
-            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
