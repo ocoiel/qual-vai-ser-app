@@ -13,11 +13,14 @@ import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
 import useSound from "use-sound";
 import { Switch } from "./ui/switch";
+import { Textarea } from "./ui/textarea";
 
 export function Form() {
   const [wait, setWait] = useState(false);
   const [title, setTitle] = useState<string>("");
   const [options, setOptions] = useState<string[]>(["", ""]);
+
+  const [hasDescription, setHasDescription] = useState(false);
 
   const router = useRouter();
   const { toast } = useToast();
@@ -69,7 +72,7 @@ export function Form() {
         <Label htmlFor='title'>Título</Label>
         <Input
           type='text'
-          placeholder='E aí? Qual vai ser?'
+          placeholder='E aí, qual vai ser? 🎉'
           name='title'
           id='title'
           onChange={(e) => {
@@ -80,7 +83,21 @@ export function Form() {
           autoFocus
           required
         ></Input>
-
+        <span
+          onClick={() => setHasDescription(!hasDescription)}
+          className='w-52 flex items-center text-sm transition-colors duration-100 text-neutral-500 hover:text-neutral-400 cursor-pointer'
+        >
+          <Icons.add className='h-4 w-4 mr-1' />
+          {hasDescription ? "Remover descrição" : "Adicionar descrição"}
+        </span>
+        {hasDescription && (
+          <div className='flex flex-col space-y-2'>
+            <Label htmlFor='description'>
+              Descrição <span className='text-neutral-500'>(opcional)</span>
+            </Label>{" "}
+            <Textarea placeholder='Fale mais, fale mais 👀' />
+          </div>
+        )}
         <Separator className='space-y-2' />
 
         <div className='flex items-center justify-between'>
