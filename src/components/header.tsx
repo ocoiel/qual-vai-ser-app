@@ -6,6 +6,7 @@ import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
+import { UserNav } from "./user-in-nav";
 
 export function Header() {
   return (
@@ -52,6 +53,8 @@ export function Header() {
                 Login
               </div>
             </Link>
+            {/* @ts-ignore */}
+            <UserNav />
           </nav>
         </div>
       </div>

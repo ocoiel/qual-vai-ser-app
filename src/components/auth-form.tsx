@@ -7,15 +7,35 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Icons } from "@/components/icons";
+import { useSupabase } from "@/hooks/use-supabase";
+import { useToast } from "@/hooks/use-toast";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+  const { supabase } = useSupabase();
+  const { toast } = useToast();
+
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  const [email, setEmail] = React.useState<string>("");
+
+  async function sendMagickLink() {
+    await supabase.auth.signInWithOtp({
+      email: email,
+      options: {
+        emailRedirectTo: "http://localhost:3000/dash",
+      },
+    });
+  }
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     setIsLoading(true);
+    toast({
+      title: "✅ Enviamos um email para test@test.com",
+      description: "Por favor, verifique sua caixa de entrada e o span",
+    });
 
     setTimeout(() => {
       setIsLoading(false);
@@ -33,14 +53,17 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             <Input
               id='email'
               placeholder='qualvaiser@gmail.com'
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               type='email'
               autoCapitalize='none'
               autoComplete='email'
               autoCorrect='off'
               disabled={isLoading}
+              required
             />
           </div>
-          <Button disabled={isLoading}>
+          <Button disabled={isLoading} onClick={sendMagickLink}>
             {isLoading && (
               <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
             )}
@@ -59,7 +82,14 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         </div>
       </div>
       <div className='grid gap-2'>
-        <Button variant='outline' type='button' disabled={isLoading}>
+        <Button
+          variant='outline'
+          type='button'
+          disabled={isLoading}
+          onClick={async () =>
+            await supabase.auth.signInWithOAuth({ provider: "google" })
+          }
+        >
           {isLoading ? (
             <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
           ) : (

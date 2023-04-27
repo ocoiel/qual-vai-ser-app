@@ -15,6 +15,7 @@ import useSound from "use-sound";
 import { Switch } from "./ui/switch";
 import { Textarea } from "./ui/textarea";
 import { CalendarExpires } from "./calendar-expires";
+import { useSupabase } from "@/hooks/use-supabase";
 
 export function Form() {
   const [wait, setWait] = useState(false);
@@ -25,6 +26,7 @@ export function Form() {
   const [hasExpiresAt, setHasExpiresAt] = useState(false);
 
   const router = useRouter();
+  const { supabase } = useSupabase();
   const { toast } = useToast();
   const [animationRef] = useAutoAnimate<HTMLDivElement>();
   const [play] = useSound("/key-press1.mp3");

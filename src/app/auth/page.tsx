@@ -10,25 +10,16 @@ export const metadata: Metadata = {
   description: "Login no app Qual Vai Ser",
 };
 
-export default function SignInPage() {
+export default function AuthPage() {
   return (
     <div className='overflow-y-hidden'>
       <div className='flex justify-center items-center'></div>
       <div className='p-6 lg:p-8 flex h-screen justify-center items-center'>
         <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
           <div className='flex flex-col space-y-2 text-center'>
-            <div className='my-8 flex gap-x-2 justify-center items-center'>
-              <Label>Ainda não tem uma conta?</Label>
-              <Link
-                href='/auth/signup'
-                className='hover:underline p-2 border border-border-colors rounded-lg transition-colors duration-200'
-              >
-                Crie uma conta
-              </Link>
-            </div>
             <h1 className='text-2xl font-semibold tracking-tight'>Login</h1>
             <p className='text-sm text-muted-foreground'>
-              Entre na sua conta Qual Vai Ser
+              Entre ou crie sua conta
             </p>
           </div>
           <UserAuthForm />
