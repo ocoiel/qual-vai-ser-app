@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import useSound from "use-sound";
 import { Switch } from "./ui/switch";
 import { Textarea } from "./ui/textarea";
+import { CalendarExpires } from "./calendar-expires";
 
 export function Form() {
   const [wait, setWait] = useState(false);
@@ -21,6 +22,7 @@ export function Form() {
   const [options, setOptions] = useState<string[]>(["", ""]);
 
   const [hasDescription, setHasDescription] = useState(false);
+  const [hasExpiresAt, setHasExpiresAt] = useState(false);
 
   const router = useRouter();
   const { toast } = useToast();
@@ -118,7 +120,6 @@ export function Form() {
         <div className='flex flex-col w-full space-y-4' ref={animationRef}>
           {options.map((opt: any, i: number) => (
             <div className='flex justify-end items-center' key={i}>
-              {/* <div className='font-bold text-my-purple w-2 mr-10'>{i + 1}.</div> */}
               <Input
                 className='relative flex'
                 type='text'
@@ -159,8 +160,18 @@ export function Form() {
 
           <div className='flex p-2 gap-x-4 items-center'>
             <Label htmlFor='expires'>Expira automaticamente</Label>
-            <Switch id='expires' />
+            <Switch
+              id='expires'
+              checked={hasExpiresAt}
+              onCheckedChange={() => setHasExpiresAt(!hasExpiresAt)}
+            />
           </div>
+          {hasExpiresAt && (
+            <div className='flex flex-col gap-y-2'>
+              <CalendarExpires />
+              <Input type='time' className='w-fit' />
+            </div>
+          )}
         </div>
 
         <Separator className='space-y-2' />

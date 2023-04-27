@@ -11,6 +11,7 @@ import {
   FileText,
   HelpCircle,
   Home,
+  CornerDownRightIcon,
   Image,
   Chrome,
   LayoutDashboard,
@@ -48,6 +49,7 @@ export const Icons = {
     </svg>
   ),
   close: X,
+  corner: CornerDownRightIcon,
   google: Chrome,
   spinner: Loader2,
   loader: Loader,
