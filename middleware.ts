@@ -8,3 +8,7 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareSupabaseClient({ req, res });
   await supabase.auth.getSession();
 }
+
+export const config = {
+  matcher: ["/dash"],
+};
